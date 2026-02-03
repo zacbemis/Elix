@@ -1,14 +1,13 @@
 import Config
 
-# Configure your database
+# Database (Supabase; set DATABASE_URL in .envrc and use direnv or source .envrc)
 config :elix, Elix.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "elix_dev",
+  url: System.get_env("DATABASE_URL") || raise "DATABASE_URL is not set (e.g. source .envrc)",
+  ssl: [verify: :verify_none],
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 5
+
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
