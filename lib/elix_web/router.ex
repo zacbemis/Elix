@@ -18,6 +18,8 @@ defmodule ElixWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/profile", ProfileController, :profile
+    get "/profile/:username", ProfileController, :profile_username
   end
 
   # Other scopes may use custom stacks.
